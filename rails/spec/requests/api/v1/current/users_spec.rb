@@ -12,13 +12,13 @@ RSpec.describe 'Api::V1::Current::Users', type: :request do
       it '正常にレコードが取得できる' do
         subject
         res = JSON.parse(response.body)
-        expect(res.keys).to eq(['id', 'name', 'email'])
+        expect(res.keys).to eq(%w[id name email])
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'ヘッダー情報が空のままリクエストが送信された場合' do
-      let(:headers) { nill }
+      let(:headers) { nil }
       it 'unauthorrizedを返す' do
         subject
         res = JSON.parse(response.body)
