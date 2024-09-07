@@ -47,6 +47,9 @@ gem 'devise_token_auth'
 # 開発環境でメール送信をテストする
 gem 'letter_opener_web'
 
+# レスポンスJSONを制御する(必要な情報を必要な分だけ取得できるように)
+gem 'active_model_serializers'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
