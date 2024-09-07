@@ -19,7 +19,7 @@ export default function Home() {
   if (!data) return <Loading />;
 
   return (
-    <div className="flex flex-col items-center gap-3 p-5">
+    <div className="flex flex-col items-center justify-center h-screen gap-3 p-5">
       <h1>Health Check Result</h1>
       <p>{data.message}</p>
       <SimpleButton text={"ここをクリック"} />
