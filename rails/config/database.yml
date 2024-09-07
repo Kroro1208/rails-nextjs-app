@@ -10,6 +10,7 @@ development:
   host: db
   database: myapp_development
   password: password
+  port: 3306
 
 test:
   <<: *default
