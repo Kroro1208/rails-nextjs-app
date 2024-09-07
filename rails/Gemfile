@@ -32,6 +32,21 @@ gem 'bootsnap', require: false
 # Nextjsからリクエスト受け取るためのcorsの設定
 gem 'rack-cors'
 
+# ユーザー認証提供
+gem 'devise'
+
+# deviseの日本語化
+gem 'devise-i18n'
+
+# 認証プロバイダーを介してユーザー認証を行う
+gem 'omniauth', '~> 2.0'
+
+# ユーザートークン認証提供
+gem 'devise_token_auth'
+
+# 開発環境でメール送信をテストする
+gem 'letter_opener_web'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
