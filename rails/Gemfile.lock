@@ -299,6 +299,7 @@ DEPENDENCIES
   devise-i18n
   devise_token_auth
   factory_bot_rails
+  faker
   letter_opener_web
   mysql2 (~> 0.5)
   omniauth (~> 2.0)

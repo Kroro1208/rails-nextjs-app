@@ -68,6 +68,7 @@ group :development, :test do
   gem 'rubocop-rspec'
   # テスト用データ作成
   gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do

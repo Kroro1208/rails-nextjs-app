@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :user do
-    name { '田中太郎' }
-    sequence(:email) { |n| "#{n}_test@example.com" }
-    password { 'password' }
+    name { Faker::Name.name }
+    sequence(:email) { |n| "#{n}_" + Faker::Internet.email }
+    password { Faker::Internet.password(min_length: 10) }
     confirmed_at { Time.current }
   end
 end
