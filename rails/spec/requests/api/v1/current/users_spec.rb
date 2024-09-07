@@ -22,7 +22,7 @@ RSpec.describe 'Api::V1::Current::Users', type: :request do
       it 'unauthorrizedを返す' do
         subject
         res = JSON.parse(response.body)
-        expect(res['errors']).to eq['ログインもしくはアカウントを登録してください']
+        expect(res['errors']).to eq(['ログインもしくはアカウントを登録してください'])
         expect(response).to have_http_status(:unauthorrized)
       end
     end
