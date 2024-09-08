@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Article, type: :model do
   let(:user) { create(:user) } # トップレベルで宣言
 
@@ -48,3 +49,4 @@ RSpec.describe Article, type: :model do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
