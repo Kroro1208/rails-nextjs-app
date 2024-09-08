@@ -4,6 +4,13 @@
 module Api
   module V1
     class ArticlesController < ApplicationController
+
+      def index
+        articles = Article.published.order(created_at: :desc).page(params[:page] || 1).per(10) # || 1でデフォルトで1ページ目設定
+        render json: articles
+      end
+
+
       def show
         article = Article.published.find(params[:id]) # Article.where(status: "published")と同じ
         render json: article
