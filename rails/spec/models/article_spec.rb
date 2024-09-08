@@ -13,7 +13,7 @@ RSpec.describe Article, type: :model do
   end
 
   describe 'Validations' do
-    let(:article) { build(:article, title: title, content: content, status: status, user: user) }
+    let(:article) { build(:article, title:, content:, status:, user:) }
     let(:title) { Faker::Lorem.sentence }
     let(:content) { Faker::Lorem.paragraph }
     let(:status) { :published }
@@ -42,7 +42,7 @@ RSpec.describe Article, type: :model do
 
     context 'ステータスが未保存かつ既にユーザーが未保存ステータスの記事を保有していた場合' do
       let(:status) { :unsaved }
-      before { create(:article, status: :unsaved, user: user) }
+      before { create(:article, status: :unsaved, user:) }
       it '例外を発生させる' do
         expect { article.save! }.to raise_error(StandardError, '未保存の記事は一つしか保有できません')
       end
