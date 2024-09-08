@@ -98,6 +98,8 @@ Metrics/BlockLength:
     - "config/routes/**/*.rb"
     - "*.gemspec"
     - "db/seeds.rb"
+    - 'spec/**/*'
+  IgnoredMethods: ['describe', 'context']
 
 Metrics/CyclomaticComplexity:
   Max: 10

@@ -50,6 +50,9 @@ gem 'letter_opener_web'
 # レスポンスJSONを制御する(必要な情報を必要な分だけ取得できるように)
 gem 'active_model_serializers'
 
+# エラーメッセージ日本語化
+gem 'rails-i18n'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
