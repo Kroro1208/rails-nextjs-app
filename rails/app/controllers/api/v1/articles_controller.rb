@@ -6,7 +6,7 @@ module Api
     class ArticlesController < ApplicationController
 
       def index
-        articles = Article.published.order(created_at: :desc).page(params[:page] || 1).per(10) # || 1でデフォルトで1ページ目設定
+        articles = Article.published.order(created_at: :desc).page(params[:page] || 1).per(10).includes(:user)
         render json: articles
       end
 
