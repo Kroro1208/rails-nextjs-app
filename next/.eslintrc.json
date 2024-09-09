@@ -13,7 +13,25 @@
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "import/order": [2, { "alphabetize": { "order": "asc" } }],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
     "import/no-unresolved": "off",
     "react/prop-types": "off",
     "prettier/prettier": [
