@@ -19,7 +19,7 @@ module Api
 
         def show
           article = current_user.articles.find(params[:id])
-          render json: article, serializer: CurrentArticleSerializer
+          render json: article, serializer: ArticleSerializer
         end
 
         def update
