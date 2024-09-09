@@ -1,28 +1,52 @@
 "use client";
 
-import axios from "axios";
+import Link from "next/link";
 import useSWR from "swr";
 import Loading from "./Loading";
-import SimpleButton from "./components/SimpleButton";
+import ArticleCard from "./components/ArticleCard";
 
-const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+type ArticleProps = {
+  id: number;
+  title: string;
+  content: string;
+  status: string;
+  created_at: string;
+  fromToday?: string;
+  user?: {
+    name: string;
+  };
+};
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function Home() {
-  const { data, error } = useSWR(
-    "http://localhost:3000/api/v1/health_check",
+  const { data, error } = useSWR<{ articles: ArticleProps[] }>(
+    "http://localhost:3000/api/v1/articles",
     fetcher,
   );
-
-  console.log(data);
 
   if (error) return <div>エラーが発生しました: {error.message}</div>;
   if (!data) return <Loading />;
 
+  const { articles } = data;
+
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-3 p-5">
-      <h1>Health Check Result</h1>
-      <p>{data.message}</p>
-      <SimpleButton text={"ここをクリック"} />
+    <div className="container mx-auto px-4 py-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {articles.map((article: ArticleProps) => (
+          <Link
+            key={article.id}
+            href={`/article/${article.id}`}
+            className="no-underline"
+          >
+            <ArticleCard
+              title={article.title}
+              fromToday={article.fromToday || article.created_at}
+              userName={article.user?.name || "名前なし"}
+            />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
