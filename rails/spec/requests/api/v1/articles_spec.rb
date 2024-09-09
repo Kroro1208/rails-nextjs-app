@@ -11,7 +11,7 @@ RSpec.describe 'Api::V1::Articles', type: :request do
 
       expect(json_response.keys).to eq(%w[articles meta])
       expect(json_response['articles'].length).to eq 10
-      expect(json_response['articles'][0].keys).to eq(%w[id title content created_at from_today user])
+      expect(json_response['articles'][0].keys).to eq(%w[id title content status created_at from_today user])
       expect(json_response['articles'][0]['user'].keys).to eq(['name'])
       expect(json_response['meta'].keys).to eq(%w[current_page total_pages])
       expect(json_response['meta']['current_page']).to eq current_page
@@ -58,7 +58,7 @@ RSpec.describe 'Api::V1::Articles', type: :request do
         it '正常にレコードを取得できる' do
           subject
           json_response = JSON.parse(response.body)
-          expect(json_response.keys).to eq(%w[id title content created_at from_today user])
+          expect(json_response.keys).to eq(%w[id title content status created_at from_today user])
           expect(json_response['user'].keys).to eq(['name'])
           expect(response).to have_http_status(:ok)
         end

@@ -2,8 +2,12 @@
 # frozen_string_literal: true
 
 class ArticleSerializer < ActiveModel::Serializer
-  attributes :id, :title, :content, :created_at, :from_today
+  attributes :id, :title, :content, :status, :created_at, :from_today
   belongs_to :user, serializer: UserSerializer # UserSerializerをArticleSerializerで呼び出し
+
+  def status
+    object.status_i18n
+  end
 
   def created_at
     object.created_at.strftime('%Y/%m/%d')
