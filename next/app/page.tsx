@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import useSWR from "swr";
-import Loading from "./Loading";
+
 import ArticleCard from "./components/ArticleCard";
+import Loading from "./Loading";
 
 type ArticleProps = {
   id: number;
