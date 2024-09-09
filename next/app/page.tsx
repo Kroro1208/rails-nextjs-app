@@ -3,8 +3,8 @@
 import Link from "next/link";
 import useSWR from "swr";
 
-import ArticleCard from "./components/ArticleCard";
 import Loading from "./Loading";
+import ArticleCard from "./components/ArticleCard";
 
 type ArticleProps = {
   id: number;
