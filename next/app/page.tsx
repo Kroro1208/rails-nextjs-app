@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import useSWR from "swr";
+
+import Link from "next/link";
 
 import ArticleCard from "./components/ArticleCard";
 import Loading from "./Loading";
