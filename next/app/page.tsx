@@ -5,6 +5,7 @@ import Link from "next/link";
 import ArticleCard from "./components/ArticleCard";
 import Loading from "./Loading";
 import camelcaseKeys from 'camelcase-keys'
+import ErrorPage from "./components/Error";
 
 type ArticleProps = {
   id: number;
@@ -24,7 +25,7 @@ export default function Home() {
     fetcher,
   );
 
-  if (error) return <div>エラーが発生しました: {error.message}</div>;
+  if (error) return <ErrorPage />;
   if (!data) return <Loading />;
 
   const articles = camelcaseKeys(data.articles);
