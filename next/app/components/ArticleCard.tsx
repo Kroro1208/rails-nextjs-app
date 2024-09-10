@@ -11,6 +11,7 @@ import {
 
 type ArticleProps = {
   title: string;
+//   content: string
   fromToday: string;
   userName: string;
 };
@@ -21,6 +22,7 @@ const omit = (text: string) => (len: number) => (ellipsis: string) =>
 
 export default function ArticleCard({
   title,
+//   content,
   fromToday,
   userName,
 }: ArticleProps) {

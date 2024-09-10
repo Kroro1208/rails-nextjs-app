@@ -1,18 +1,15 @@
 "use client";
 
 import useSWR from "swr";
-
 import Link from "next/link";
-
 import ArticleCard from "./components/ArticleCard";
 import Loading from "./Loading";
+import camelcaseKeys from 'camelcase-keys'
 
 type ArticleProps = {
   id: number;
   title: string;
-  content: string;
-  status: string;
-  created_at: string;
+  createdAt: string;
   fromToday?: string;
   user?: {
     name: string;
@@ -30,20 +27,20 @@ export default function Home() {
   if (error) return <div>エラーが発生しました: {error.message}</div>;
   if (!data) return <Loading />;
 
-  const { articles } = data;
+  const articles = camelcaseKeys(data.articles);
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.map((article: ArticleProps) => (
           <Link
             key={article.id}
             href={`/article/${article.id}`}
-            className="no-underline"
+            className="no-underline transition-transform duration-300 hover:scale-105"
           >
             <ArticleCard
               title={article.title}
-              fromToday={article.fromToday || article.created_at}
+              fromToday={article.fromToday || article.createdAt}
               userName={article.user?.name || "名前なし"}
             />
           </Link>
