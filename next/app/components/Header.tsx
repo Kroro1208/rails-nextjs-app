@@ -21,9 +21,11 @@ const Header = () => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-            <Button variant="default" className="w-full sm:w-auto">
-              Sign in
-            </Button>
+            <Link href={'/signin'}>
+              <Button variant="default" className="w-full sm:w-auto">
+                Sign in
+              </Button>
+            </Link>
             <Button variant="outline" className="w-full sm:w-auto">
               Sign Up
             </Button>
