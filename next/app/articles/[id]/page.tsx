@@ -24,14 +24,11 @@ const fetcher = (url: string) => fetch(url).then(res => res.json());
 const ArticleDetails: NextPage = () => {
     const params = useParams();
     const id = params?.id;
-    const url = id && !Array.isArray(id) ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/articles/${id}` : null;
+    // idが存在しない場合や配列の場合（複数のパラメータがある場合）にエラーページを表示
+    const url = id && !Array.isArray(id) ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/articles/${id}` : <ErrorPage />;
 
     const { data, error } = useSWR<ArticleProps>(url, fetcher);
-
-    // id が存在しない場合や配列の場合（複数のパラメータがある場合）にエラーページを表示
-    if(!id || Array.isArray(id)) {
-        return <ErrorPage />
-    }
+    
     if(error) return <ErrorPage />
     if(!data) return <Loading />
 
