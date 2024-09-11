@@ -1,3 +1,4 @@
+"use client"
 import ErrorPage from "@/app/components/Error";
 import Loading from "@/app/Loading";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,7 +21,7 @@ type ArticleProps = {
 
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
-export const ArticleDetails: NextPage = () => {
+const ArticleDetails: NextPage = () => {
     const params = useParams();
     const id = params?.id;
     const url = id && !Array.isArray(id) ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/articles/${id}` : null;
@@ -96,3 +97,4 @@ export const ArticleDetails: NextPage = () => {
       )
 }
 
+export default ArticleDetails;

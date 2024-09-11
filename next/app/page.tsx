@@ -50,7 +50,7 @@ export default function Home() {
         {articles.map((article: ArticleProps) => (
           <Link
             key={article.id}
-            href={`/article/${article.id}`}
+            href={`/articles/${article.id}`}
             className="no-underline transition-transform duration-300 hover:scale-105"
           >
             <ArticleCard
