@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios, { type AxiosResponse } from "axios";
 import type { NextPage } from "next";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { useNotificationState } from "../hooks/NotidicationStrate";
 
@@ -15,7 +15,6 @@ type SignInFormData = {
 }
 
 const SignInPage: NextPage = () => {
-    const router = useRouter();
     const pathname = usePathname();
     const { showNotification } = useNotificationState();
     const { handleSubmit, register, formState: { errors } } = useForm<SignInFormData>({
@@ -61,7 +60,10 @@ const SignInPage: NextPage = () => {
             pathname: pathname
           });
 
-          router.push('/');
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 1500);
+
       } catch (error) {
           if (axios.isAxiosError(error)) {
               console.log(error.message);
