@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 const SignOutPage: NextPage = () => {
     const router = useRouter();
-    const [_, setUser ] = useUserState();
+    const [, setUser ] = useUserState();
     
     useEffect(() => {
         localStorage.clear()

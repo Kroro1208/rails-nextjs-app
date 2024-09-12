@@ -63,7 +63,7 @@ const Header = () => {
                       <DropdownMenuItem>
                         <FileTextIcon className="mr-2 h-4 w-4" /> 記事の管理
                       </DropdownMenuItem>
-                      <Link href="/sign_out">
+                      <Link href="/signout">
                         <DropdownMenuItem>
                           <LogOutIcon className="mr-2 h-4 w-4" /> サインアウト
                         </DropdownMenuItem>
