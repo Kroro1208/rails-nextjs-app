@@ -13,7 +13,7 @@ const Header = () => {
             </Link>
           </div>
           <div className="text-center items-center mb-4 md:mb-0 group">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary inline-block">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl text-primary inline-block font-thin">
               NEXT TECH BLOG
             </h1>
             <div className="relative h-1 mx-auto mt-2 md:mt-4 overflow-hidden w-full">

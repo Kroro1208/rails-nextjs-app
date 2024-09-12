@@ -51,7 +51,7 @@ const SignInPage: NextPage = () => {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="メールアドレスを入力してください"
                     {...register('email', { required: 'Email is required' })}
                   />
                   {errors.email && (
@@ -63,7 +63,7 @@ const SignInPage: NextPage = () => {
                   <Input
                     id="password"
                     type="password"
-                    placeholder="Enter your password"
+                    placeholder="パスワードを入力してください"
                     {...register('password', { required: 'Password is required' })}
                   />
                   {errors.password && (
