@@ -1,8 +1,36 @@
+"use client"
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
+  const [ isLoggedIn, setIsLoggedIn ]  = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkLoginState = () => {
+      const token = localStorage.getItem('access-token')
+      setIsLoggedIn(!!token)
+    }
+  
+    window.addEventListener('storage', checkLoginState)
+    checkLoginState()
+  
+    return () => {
+      window.removeEventListener('storage', checkLoginState)
+    }
+  }, [])
+
+  const handleSignOut = () => {
+    localStorage.removeItem('access-token')
+    localStorage.removeItem('client')
+    localStorage.removeItem('uid')
+    setIsLoggedIn(false);
+    router.push('/');
+  }
+
   return (
     <header className="bg-white text-black p-5">
       <div className="container mx-auto px-4 max-w-screen-lg">
@@ -21,14 +49,30 @@ const Header = () => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-            <Link href={'/signin'}>
-              <Button variant="default" className="w-full sm:w-auto">
-                Sign in
+            { isLoggedIn ? (
+              <>
+              <Link href="/profile">
+                <Button variant="outline" className="w-full sm:w-auto">
+                  Profile
+                </Button>
+              </Link>
+              <Button variant="default" className="w-full sm:w-auto" onClick={handleSignOut}>
+                Sign Out
               </Button>
-            </Link>
-            <Button variant="outline" className="w-full sm:w-auto">
-              Sign Up
-            </Button>
+            </>
+            ) : (
+              <>
+                <Link href={'/signin'}>
+                  <Button variant="default" className="w-full sm:w-auto">
+                    Sign in
+                  </Button>
+                </Link>
+                <Button
+                variant="outline" className="w-full sm:w-auto">
+                  Sign Up
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>
