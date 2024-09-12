@@ -4,6 +4,7 @@ import "./globals.css";
 import { Suspense } from "react";
 import Loading from "./Loading";
 import Header from "./components/Header";
+import CurrentUser from "./components/CurrentUser";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,6 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Suspense fallback={<Loading />}>
+        <CurrentUser />
           <Header />
           {children}
         </Suspense>
