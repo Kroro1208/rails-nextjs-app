@@ -1,15 +1,18 @@
 "use client";
 
 import type { NextPage } from "next";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useUserState } from "../hooks/useGlobalState";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
+import { useNotificationState } from "../hooks/NotidicationStrate";
 
 const SignOutPage: NextPage = () => {
     const router = useRouter();
+    const pathname = usePathname();
+    const { showNotification } = useNotificationState();
     const [, setUser ] = useUserState();
     
-    useEffect(() => {
+    const signOut = useCallback(() => {
         localStorage.clear()
         setUser({
             id: 0,
@@ -18,8 +21,17 @@ const SignOutPage: NextPage = () => {
             isSignedIn: false,
             isFetched: false
         });
+        showNotification({
+            message: 'サインアウトしました',
+            variant: 'success',
+            pathname: pathname,
+        });
         router.push('/');
-    }, [router, setUser])
+        
+    }, [router, setUser, showNotification, pathname])
+    useEffect(() => {
+        signOut();
+    }, [signOut]);
   return (
     <></>
   );

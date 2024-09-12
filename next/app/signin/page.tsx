@@ -5,8 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios, { type AxiosResponse } from "axios";
 import type { NextPage } from "next";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useForm, type SubmitHandler } from 'react-hook-form'
+import { useNotificationState } from "../hooks/NotidicationStrate";
 
 type SignInFormData = {
     email: string;
@@ -15,6 +16,8 @@ type SignInFormData = {
 
 const SignInPage: NextPage = () => {
     const router = useRouter();
+    const pathname = usePathname();
+    const { showNotification } = useNotificationState();
     const { handleSubmit, register, formState: { errors } } = useForm<SignInFormData>({
         defaultValues: { email: '', password: ''}
     });
@@ -47,16 +50,26 @@ const SignInPage: NextPage = () => {
               headers: headers
           });
 
-          localStorage.setItem('access-token', res.headers['access-token'])
-          localStorage.setItem('client', res.headers.client)
-          localStorage.setItem('uid', res.headers.uid)
-          window.dispatchEvent(new Event('storage'))
+          localStorage.setItem('access-token', res.headers['access-token']);
+          localStorage.setItem('client', res.headers.client);
+          localStorage.setItem('uid', res.headers.uid);
+          window.dispatchEvent(new Event('storage'));
+
+          showNotification({
+            message: 'サインインに成功しました',
+            variant: 'success',
+            pathname: pathname
+          });
 
           router.push('/');
       } catch (error) {
           if (axios.isAxiosError(error)) {
               console.log(error.message);
-              // エラーハンドリングをここで行う
+              showNotification({
+                message: 'サインインに失敗しました',
+                variant: 'destructive',
+                pathname: pathname
+              });
           }
       }
   };

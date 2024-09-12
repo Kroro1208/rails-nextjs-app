@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import Loading from "./Loading";
 import Header from "./components/Header";
 import CurrentUser from "./components/CurrentUser";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,6 +37,7 @@ export default function RootLayout({
         <CurrentUser />
           <Header />
           {children}
+          <Toaster />
         </Suspense>
       </body>
     </html>

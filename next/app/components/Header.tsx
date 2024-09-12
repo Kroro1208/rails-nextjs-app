@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useUserState } from '../hooks/useGlobalState';
 import { useRouter } from 'next/navigation';
-import { FileTextIcon, LogOutIcon, PersonStandingIcon } from 'lucide-react'
+import { FileTextIcon, LogOutIcon } from 'lucide-react'
 import { PersonIcon } from '@radix-ui/react-icons'
 
 const Header = () => {
