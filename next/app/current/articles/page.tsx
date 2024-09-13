@@ -10,6 +10,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import camelcaseKeys from "camelcase-keys";
 import { ChevronRight, Edit } from "lucide-react";
 import { NextPage } from "next";
+import Link from "next/link";
 import useSWR from "swr";
 
 type ArticleProps = {
@@ -19,7 +20,6 @@ type ArticleProps = {
 }
 
 type ArticlesProps = ArticleProps[];
-
 
 const CurrentUserArticles: NextPage = () => {
     useRequireAuth();
@@ -63,18 +63,20 @@ const CurrentUserArticles: NextPage = () => {
                                             </TooltipContent>
                                         </Tooltip>
                                     </TooltipProvider>
-                                    <TooltipProvider>
-                                        <Tooltip>
-                                            <TooltipTrigger asChild>
-                                                <Button variant="outline" size="icon">
-                                                    <ChevronRight className="h-4 w-4" />
-                                                </Button>
-                                            </TooltipTrigger>
-                                            <TooltipContent>
-                                                <p>表示を確認</p>
-                                            </TooltipContent>
-                                        </Tooltip>
-                                    </TooltipProvider>
+                                    <Link href={`/current/articles/${article.id}`}>
+                                        <TooltipProvider>
+                                            <Tooltip>
+                                                <TooltipTrigger asChild>
+                                                    <Button variant="outline" size="icon">
+                                                        <ChevronRight className="h-4 w-4" />
+                                                    </Button>
+                                                </TooltipTrigger>
+                                                    <TooltipContent>
+                                                        <p>表示を確認</p>
+                                                    </TooltipContent>
+                                            </Tooltip>
+                                        </TooltipProvider>
+                                    </Link>
                                 </div>
                             </div>
                         </CardContent>
