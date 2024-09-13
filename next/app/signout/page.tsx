@@ -28,10 +28,12 @@ const SignOutPage: NextPage = () => {
         });
         router.push('/');
         
-    }, [router, setUser, showNotification, pathname])
+    }, [router, setUser, showNotification, pathname]);
+
     useEffect(() => {
         signOut();
     }, [signOut]);
+    
   return (
     <></>
   );

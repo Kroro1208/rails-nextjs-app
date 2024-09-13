@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react";
-import { useUserState } from "../hooks/useGlobalState"
+import { useUserState } from "./useGlobalState"
 import axios, { type AxiosError, type AxiosResponse } from "axios";
 
 const CurrentUser = () => {

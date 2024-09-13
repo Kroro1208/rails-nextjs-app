@@ -4,7 +4,7 @@ import "./globals.css";
 import { Suspense } from "react";
 import Loading from "./Loading";
 import Header from "./components/Header";
-import CurrentUser from "./components/CurrentUser";
+import CurrentUser from "./hooks/CurrentUser";
 import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
