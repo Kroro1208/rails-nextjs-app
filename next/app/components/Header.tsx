@@ -65,12 +65,14 @@ const Header = () => {
                   >
                     Sign in
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    className="ml-2 text-base font-normal rounded border-[1.5px] border-primary"
-                  >
-                    Sign Up
-                  </Button>
+                  <Link href="/signup">
+                    <Button 
+                      variant="outline" 
+                      className="ml-2 text-base font-normal rounded border-[1.5px] border-primary"
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
                 </div>
               )}
               {user.isSignedIn && (
