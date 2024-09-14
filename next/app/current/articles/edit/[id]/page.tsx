@@ -179,7 +179,7 @@ const EditArticlePage = () => {
               <Controller
                 name="title"
                 control={control}
-                render={({ field, fieldState: { error } }) => (
+                render={({ field　}) => (
                   <Input
                     {...field}
                     placeholder="Write in Title"
@@ -195,7 +195,7 @@ const EditArticlePage = () => {
               <Controller
                 name="content"
                 control={control}
-                render={({ field, fieldState: { error  } }) => (
+                render={({ field }) => (
                   <Textarea
                     {...field}
                     placeholder="Write in Markdown Text"
