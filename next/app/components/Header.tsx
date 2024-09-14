@@ -8,6 +8,8 @@ import { useUserState } from '../hooks/useGlobalState';
 import { usePathname, useRouter } from 'next/navigation';
 import { FileTextIcon, LogOutIcon } from 'lucide-react'
 import { PersonIcon } from '@radix-ui/react-icons'
+import axios, { AxiosError, AxiosResponse } from 'axios'
+
 
 const Header = () => {
   const router = useRouter();
@@ -15,7 +17,26 @@ const Header = () => {
   const [ user ] = useUserState();
   const hideHeaderRegex = /^\/current\/articles\/edit\/\d+$/;
   if (hideHeaderRegex.test(pathname)) return null;
-
+  
+  const createNewArticle = () => {
+    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/current/articles`
+    const headers = {
+      'Content-Type': 'application/json',
+      'access-token': localStorage.getItem('access-token'),
+      'client': localStorage.getItem('client'),
+      'uid': localStorage.getItem('uid'),
+    }
+  
+    axios({
+      method: 'POST',
+      url: url,
+      headers: headers
+    }).then((res: AxiosResponse) => {
+      router.push(`/current/articles/edit/${res.data.id}`)
+    }).catch((error: AxiosError<{error: string}>) => {
+      console.log(error.message);
+    });
+  }
   return (
     <header className="bg-white text-black py-4">
       <div className="container mx-auto px-4 max-w-screen-lg">
@@ -78,6 +99,7 @@ const Header = () => {
                   <Button 
                     variant="default" 
                     className="ml-2 text-white text-base font-normal rounded w-[100px]"
+                    onClick={createNewArticle}
                   >
                     Add new
                   </Button>

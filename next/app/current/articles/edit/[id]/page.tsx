@@ -182,7 +182,7 @@ const EditArticlePage = () => {
                 render={({ field }) => (
                   <Input
                     {...field}
-                    placeholder="Write in Title"
+                    placeholder="タイトルを入力してください"
                     className="bg-white"
                   />
                 )}
@@ -198,7 +198,7 @@ const EditArticlePage = () => {
                 render={({ field }) => (
                   <Textarea
                     {...field}
-                    placeholder="Write in Markdown Text"
+                    placeholder="記事の内容をん入力してください"
                     rows={25}
                     className="bg-white"
                   />
