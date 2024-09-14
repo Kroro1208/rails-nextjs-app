@@ -52,16 +52,18 @@ const CurrentUserArticles: NextPage = () => {
                                         </span>
                                     )}
                                     <TooltipProvider>
-                                        <Tooltip>
-                                            <TooltipTrigger asChild>
-                                                <Button variant="outline" size="icon">
-                                                    <Edit className="h-4 w-4" />
-                                                </Button>
-                                            </TooltipTrigger>
-                                            <TooltipContent>
-                                                <p>編集する</p>
-                                            </TooltipContent>
-                                        </Tooltip>
+                                        <Link href={`/current/articles/edit/${article.id}`}>
+                                            <Tooltip>
+                                                <TooltipTrigger asChild>
+                                                    <Button variant="outline" size="icon">
+                                                        <Edit className="h-4 w-4" />
+                                                    </Button>
+                                                </TooltipTrigger>
+                                                <TooltipContent>
+                                                    <p>編集する</p>
+                                                </TooltipContent>
+                                            </Tooltip>
+                                        </Link>
                                     </TooltipProvider>
                                     <Link href={`/current/articles/${article.id}`}>
                                         <TooltipProvider>
