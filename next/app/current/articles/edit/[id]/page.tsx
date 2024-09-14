@@ -73,12 +73,12 @@ const EditArticlePage = () => {
     });
 
     useEffect(() => {
-        if(data) {
+        if(data && !isFetched) {
             reset(article);
-            setStatusChecked(article.status === '公開中');
             setIsFetched(true);
+            setStatusChecked(article.status === '公開中');
         }
-    }, [data, article, reset]);
+    }, [data, article, reset, isFetched, setIsFetched]);
 
     const onSubmit: SubmitHandler<ArticleFormData> = (data) => {
         if(data.title === '') {
@@ -107,7 +107,7 @@ const EditArticlePage = () => {
         const headers = {
             'Content-Type': 'application/json',
             'access-token': localStorage.getItem('access-token'),
-            'client': localStorage.getITem('client'),
+            'client': localStorage.getItem('client'),
             'uid': localStorage.getItem('uid')
         }
 
