@@ -5,13 +5,16 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useUserState } from '../hooks/useGlobalState';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { FileTextIcon, LogOutIcon } from 'lucide-react'
 import { PersonIcon } from '@radix-ui/react-icons'
 
 const Header = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const [ user ] = useUserState();
+  const hideHeaderRegex = /^\/current\/articles\/edit\/\d+$/;
+  if (hideHeaderRegex.test(pathname)) return null;
 
   return (
     <header className="bg-white text-black py-4">

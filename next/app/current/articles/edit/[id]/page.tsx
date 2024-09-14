@@ -138,7 +138,7 @@ const EditArticlePage = () => {
     }
 
     if(error) return <ErrorPage />
-    if(!data) return <Loading />
+    if(!data || isFetched) return <Loading />
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="min-h-screen bg-gray-100">
