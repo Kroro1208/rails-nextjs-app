@@ -179,7 +179,7 @@ const EditArticlePage = () => {
               <Controller
                 name="title"
                 control={control}
-                render={({ field　}) => (
+                render={({ field }) => (
                   <Input
                     {...field}
                     placeholder="Write in Title"
