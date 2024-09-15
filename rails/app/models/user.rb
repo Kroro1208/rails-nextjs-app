@@ -8,5 +8,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable
   include DeviseTokenAuth::Concerns::User
+  attr_accessor :confirm_success_url
+
   has_many :articles, dependent: :destroy
 end

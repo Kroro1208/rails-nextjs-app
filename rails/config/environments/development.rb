@@ -21,6 +21,7 @@ Rails.application.configure do
 
   # ホスト設定
   config.hosts.clear
+  config.action_mailer.default_url_options = { host: 'localhost', port: 8000 }
 
   # キャッシュ設定
   if Rails.root.join('tmp/caching-dev.txt').exist?
