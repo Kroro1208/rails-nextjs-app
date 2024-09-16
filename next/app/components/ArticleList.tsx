@@ -82,6 +82,7 @@ export default function ArticleList({ initialPage, limit }: { initialPage: numbe
                 <PaginationPrevious onClick={() => handlePageChange(page - 1)} />
               </PaginationItem>
             )}
+            {/* ページネーションの数字ボタン（1, 2, 3, ...）を生成 */}
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => (
               <PaginationItem key={`page-${pageNumber}`}>
                 <PaginationLink 
