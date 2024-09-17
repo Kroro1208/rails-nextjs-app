@@ -1,5 +1,5 @@
 "use client"
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useRequireAuth } from '@/app/hooks/useRequireAuth';
 import { useParams } from 'next/navigation';
 import useSWR from 'swr';

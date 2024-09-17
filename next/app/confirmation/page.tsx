@@ -1,5 +1,5 @@
 "use client"
-import axios, { AxiosError } from 'axios'
+import axios, { type AxiosError } from 'axios'
 import type { NextPage } from 'next'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'

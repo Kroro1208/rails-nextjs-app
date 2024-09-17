@@ -11,12 +11,12 @@ import { Input } from "@/components/ui/input";
 import MarkDownText from "@/components/ui/MarkDownText";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import axios, { AxiosError } from "axios";
+import axios, { type AxiosError } from "axios";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { Controller, type SubmitHandler, useForm } from "react-hook-form";
 import useSWR from "swr";
 
 type ArticleProps = {
@@ -78,7 +78,7 @@ const EditArticlePage = () => {
             setIsFetched(true);
             setStatusChecked(article.status === '公開中');
         }
-    }, [data, article, reset, isFetched, setIsFetched]);
+    }, [data, article, reset, isFetched]);
 
     const onSubmit: SubmitHandler<ArticleFormData> = (data) => {
         if(data.title === '') {

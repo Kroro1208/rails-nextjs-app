@@ -8,7 +8,7 @@ import { useUserState } from '../hooks/useGlobalState';
 import { usePathname, useRouter } from 'next/navigation';
 import { FileTextIcon, LogOutIcon } from 'lucide-react'
 import { PersonIcon } from '@radix-ui/react-icons'
-import axios, { AxiosError, AxiosResponse } from 'axios'
+import axios, { type AxiosError, type AxiosResponse } from 'axios'
 
 
 const Header = () => {

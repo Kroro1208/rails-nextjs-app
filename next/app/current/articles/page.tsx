@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import camelcaseKeys from "camelcase-keys";
 import { ChevronRight, Edit } from "lucide-react";
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import Link from "next/link";
 import useSWR from "swr";
 
@@ -35,8 +35,8 @@ const CurrentUserArticles: NextPage = () => {
         <div className="min-h-screen bg-gray-50 pt-6 pb-8">
             <div className="container mx-auto px-4 max-w-3xl">
                 <h2 className="text-3xl font-bold mb-6">記事の管理</h2>
-                {articles.map((article: ArticleProps, i: number) => (
-                    <Card key={i} className="mb-4">
+                {articles.map((article: ArticleProps) => (
+                    <Card key={article.id} className="mb-4">
                         <CardContent className="p-4">
                             <div className="flex justify-between items-center">
                                 <h3 className="text-lg font-semibold">{article.title}</h3>
